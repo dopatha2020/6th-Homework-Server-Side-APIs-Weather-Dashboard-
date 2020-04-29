@@ -41,13 +41,13 @@ function getCurrentWeather(cityName){
 
     $.ajax({
         type: "GET",
-        url: `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=imperial`,
+        url: `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=imperial`,
         dataType: "json",
         success: function(data) {
 
             console.log("CurrentWeather data:", data);
 
-            var img = $("<img>").attr("src", "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png");
+            var img = $("<img>").attr("src", "https://openweathermap.org/img/w/" + data.weather[0].icon + ".png");
             
             $('#cityName').addClass("card-title").text(data.name + " (" + new Date().toLocaleDateString() + ")").append(img);
 
@@ -65,7 +65,7 @@ function getUv(lat, lon){
     
     $.ajax({
         type: "GET",
-        url: `http://api.openweathermap.org/data/2.5/uvi?appid=${apiKey}&lat=${lat}&lon=${lon}`,
+        url: `https://api.openweathermap.org/data/2.5/uvi?appid=${apiKey}&lat=${lat}&lon=${lon}`,
         dataType: "json",
         success: function(data) {
   
@@ -90,7 +90,7 @@ function getUv(lat, lon){
 function getForescast(cityName){
     $.ajax({
         type: "GET",
-        url: `http://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${apiKey}&units=imperial`,
+        url: `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${apiKey}&units=imperial`,
         dataType: "json",
         success: function(data) {
             console.log("forecast", data)
@@ -106,7 +106,7 @@ function getForescast(cityName){
         
                     var title = $("<h5>").addClass("card-title").text(new Date(data.list[i].dt_txt).toLocaleDateString());
         
-                    var img = $("<img>").attr("src", "http://openweathermap.org/img/w/" + data.list[i].weather[0].icon + ".png");
+                    var img = $("<img>").attr("src", "https://openweathermap.org/img/w/" + data.list[i].weather[0].icon + ".png");
         
                     var p1 = $("<p>").addClass("card-text").text("Temp: " + data.list[i].main.temp_max + " °F");
                     var p2 = $("<p>").addClass("card-text").text("Humidity: " + data.list[i].main.humidity + "%");
